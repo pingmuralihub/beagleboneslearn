@@ -1,12 +1,13 @@
 
+https://www.youtube.com/watch?v=5fj05BWryhM&list=PLwqS94HTEwpQmgL1UsSwNk_2tQdzq3eVJ
 
+https://vadl.github.io/images/bbb/bbb_headers.png
 
-Course Repository 
-https://github.com/niekiran/EmbeddedLinuxBBB
+https://docs.yoctoproject.org/4.0.7/brief-yoctoprojectqs/index.html#build-host-packages
 
+https://www.beagleboard.org/projects/yocto-on-beaglebone-black
 
-Angstrom Demo images for BBB
-http://downloads.angstrom-distribution.org/demo/beaglebone/
+https://www.beagleboard.org/projects/yocto-on-beaglebone-black
 
 Uboot Source code 
 https://ftp.denx.de/pub/u-boot/
