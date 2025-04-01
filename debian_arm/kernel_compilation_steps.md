@@ -75,7 +75,7 @@ Two partition only need
 
 
 
-# *************************U-boot Compilation ***************************************************
+# ****************U-boot Compilation *****************
 sudo apt update
 sudo apt install gcc-arm-linux-gnueabihf
 
@@ -100,7 +100,7 @@ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j4  // -j4(4 core machine) wil
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j8  // -j8(8 core machine) will instruct the make tool to spawn 8 threads
 
 
-# ************************* linux compilation ***************************************************
+# ************** linux compilation ************
 
 Why need to update kernel ? 
 Always newrer version kernel image is good and all the necessary in-built drivers are updated.
@@ -143,7 +143,7 @@ STEP 6:
 
  make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=<path of the RFS> modules_install
 
-# ************************* Beaglebone emmc update via sd card ****************************************
+# ************ Beaglebone emmc update via sd card ****************
 1. Beaglebone black has built in os image as "BeagleBoard.org Debian Buster IoT Image 2020-04-06" & kernel module is "4.19.94-ti-r42
 2. Downloaded old version Debian Buster IoT Image 2020-04-06 image, stored the same image in ROOTFS partition in sd card and updated the same version by using following command
       cd /opt/scripts/tools/eMMC
@@ -174,7 +174,7 @@ Method 2: Directy update kernel by using follwing command
 
 
 
-# ************************* Busy box compilation ***************************************************
+# *************** Busy box compilation ********************
 
 STEP 1: download busybox 
 
@@ -188,20 +188,21 @@ STEP 4 : generate the busy box binary and minimal file system
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- CONFIG_PREFIX=<install_path> install
 
 
+Busy box tested busybox worked fine with sdcard
 
 
 
-
-# *********************************build-root compilation ***********************************
+# *************build-root compilation *********
 1) download the build root package from 
 
 https://buildroot.org/
 
 2) configure the build root 
 
+# build-root not tested but watched youtube video 
 
-*******************************Dropbear compilation*************************************
-
+***********Dropbear compilation**********
+# Dropbear not tested but watched youtube video  only and took some notes
 1) Download Dropbear 
 
 2) Configure Dropbear
@@ -225,10 +226,6 @@ dropbearkey -t rsa -f dropbear_rsa_host_key
 
 7) make a SSh connection from pc 
 ssh -l root 192.168.7.2
-
-
-
-
 
 # use this command to install an openssh server on your ubuntu host 
 sudo apt-get install openssh-server
