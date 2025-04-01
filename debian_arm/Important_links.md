@@ -6,6 +6,8 @@ https://github.com/rcn-ee/repos/blob/master/bb-beagle-flasher/suite/bullseye/deb
 # sync command usage with clear explaination
 https://phoenixnap.com/kb/linux-sync
 
+# usb and eth not working to working solution
+https://forum.beagleboard.org/t/usb-and-ethernet-interfaces-are-not-visible-to-me/36157/6
 
 # Beaglebone software images -> you can download the image based on the board ie. beaglebone black or beaglebone ai
 https://www.beagleboard.org/distros
