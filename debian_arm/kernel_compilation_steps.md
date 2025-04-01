@@ -1,6 +1,8 @@
+# 
+
 -----------------------------------------------------------------
 
-#First Step -> Run the following commands to install uboot or linux kernel module.
+# First Step -> Run the following commands to install uboot or linux kernel module.
 
 sudo apt-get update
 sudo apt-get install build-essential lzop u-boot-tools net-tools bison flex libssl-dev libncurses5-dev libncursesw5-dev unzip chrpath xz-utils minicom wget git-core
@@ -11,7 +13,7 @@ sudo apt install gcc-arm-linux-gnueabihf
 
 ----------------------------------------------------------------------
 
-#Second step -> clone the beagleboard git repo into your git source
+# Second step -> clone the beagleboard git repo into your git source
 
 Open the terminal and navigate to the source folder run the command.
 git init
