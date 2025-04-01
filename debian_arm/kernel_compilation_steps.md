@@ -1,4 +1,4 @@
-# 
+# Initially windows 11 as host machine, ubuntu 24.06 installed in vmware workstation, laptop is old configuration(Intel® Core™ i7-4700MQ CPU @ 2.40GHz × 8, 8Gb ram). While working with debian arm linux system get slow.
 
 -----------------------------------------------------------------
 
@@ -13,19 +13,22 @@ sudo apt install gcc-arm-linux-gnueabihf
 
 ----------------------------------------------------------------------
 
-# Second step -> clone the beagleboard git repo into your git source
+# Second step -> clone the beagleboard git repo into your git source. 
 
-Open the terminal and navigate to the source folder run the command.
+1. Open the terminal and navigate to the source folder run the command.
 git init
-After initializing the Git repository, you can proceed to clone the repository by pasting the copied URL from Git and providing a name for
-the cloned repository. Here is the command:
+2. After initializing the Git repository, you can proceed to clone the repository by pasting the copied URL from Git and providing a name forthe cloned repository. Here is the command:
+
 git clone https://github.com/beagleboard/linux.git
-Execute the command 
-git checkout 5.10.168-ti-rt-r76
-to switch to the desired branch in the Git repository.
+git checkout 5.10.168-ti-rt-r76 
+
+3. git checkout command used  switch to the desired branch in the Git repository.
+
+
+
 -----------------------------------------------------------------
 
-*************************cross tool-chain installation and settings for linux host******************
+# *************************cross tool-chain installation and settings for linux host******************
 
 STEP 1 : Download arm cross toolchain for your Host machine
 https://releases.linaro.org/components/toolchain/binaries/7.5-2019.12/arm-linux-gnueabihf/
@@ -49,7 +52,7 @@ source .bashrc
 6. Now type arm and press tab and it will show the all the arm cross compiler list
 
 
-*********************************SD-card formater application **********************
+# *********************************SD-card formater application **********************
 
 
 Beaglebone software images -> you can download the image based on the board ie. beaglebone black or beaglebone ai
@@ -58,14 +61,11 @@ https://www.beagleboard.org/distros
 install GParted Partition Editor application from the app center
 GParted Partition Editor
 
-Gparted works fine with VMware ubunt but it is not working when ubunt running as external hard drive 
-after 2 days of headache and different approach found that disk is great in buit tool
+Gparted works fine with VMware ubunt but it is not working when ubuntu running as external hard drive 
+after 2 days of headache and different approach found that disk is great in-buit tool
    # Issue with Gpart:
     A. you can create fat16 boot primary partition but it is not showing in lsblk and cannot mount /media/murali/BOOT
-
-
-
-
+    
 Select the usb device of the sd card by using following command
 sudo dmesg
 
@@ -75,7 +75,7 @@ Two partition only need
 
 
 
-*************************U-boot Compilation ***************************************************
+# *************************U-boot Compilation ***************************************************
 sudo apt update
 sudo apt install gcc-arm-linux-gnueabihf
 
@@ -100,7 +100,15 @@ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j4  // -j4(4 core machine) wil
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j8  // -j8(8 core machine) will instruct the make tool to spawn 8 threads
 
 
-************************* linux compilation ***************************************************
+# ************************* linux compilation ***************************************************
+
+Why need to update kernel ? 
+Always newrer version kernel image is good and all the necessary in-built drivers are updated.
+
+Why need to install linux arm cross compiler in host machie?
+we can write target board driver code in host macine and build the kernel modlue  
+ 
+
 STEP 1:
 /*
  *removes all the temporary folder, object files, images generated during the previous build. 
@@ -135,8 +143,38 @@ STEP 6:
 
  make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=<path of the RFS> modules_install
 
+# ************************* Beaglebone emmc update via sd card ****************************************
+1. Beaglebone black has built in os image as "BeagleBoard.org Debian Buster IoT Image 2020-04-06" & kernel module is "4.19.94-ti-r42
+2. Downloaded old version Debian Buster IoT Image 2020-04-06 image, stored the same image in ROOTFS partition in sd card and updated the same version by using following command
+      cd /opt/scripts/tools/eMMC
+      ls -l
+      ./init-emmc-flasher-v3.sh
+3. After executing the script successfully, board is turned off  automatically, remove the sd card and boot with emmc.
+4. After that install the newer version debian image in the SD card (Debian Bullseye IoT Image 2023-09-02).
+   the above script is not listed in the /opt/scripts/tools/eMMC         
+ 5. Found two methods to updated the kernel and image version  
+Method 1: After starting beaglebone with SD card 5.10 kernel  (Debian Bullseye IoT Image 2023-09-02),
+executed the follwoing command.
+sudo enable-beagle-flasher
+sudo reboot
+Method 2: Directy update kernel by using follwing command
+      sudo apt update
+      apt list --upgradable
+      sudo apt install bbb.io-kernel-5.10-ti-am335x
+      uname -r
+      sudo apt remove bbb.io-kernel-4.19-ti-am335x --purge
 
-************************* Busy box compilation ***************************************************
+
+
+# issues 
+1. After updating kernel image usb over ethernet is not working and usb device is not showing with ifconfig command.
+2. Tried simple character driver code but make file is not working after update.
+3. With SD card booting with latest image, usb & ethernet is not detected with ifconfig command, tested and debugged for sever hours and no improvement. 
+
+
+
+
+# ************************* Busy box compilation ***************************************************
 
 STEP 1: download busybox 
 
@@ -151,7 +189,10 @@ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- CONFIG_PREFIX=<install_path> in
 
 
 
-*********************************build-root compilation ***********************************
+
+
+
+# *********************************build-root compilation ***********************************
 1) download the build root package from 
 
 https://buildroot.org/
@@ -165,7 +206,7 @@ https://buildroot.org/
 
 2) Configure Dropbear
 
-./configure --host=arm-linux-gnueabihf --disable-zlib --prefix=/home/kiran/BBB_Workspace/dropbear CC=arm-linux-gnueabihf-gcc
+./configure --host=arm-linux-gnueabihf --disable-zlib --prefix=/home/murali/Desktop/beaglebone_black/dropbear/ CC=arm-linux-gnueabihf-gcc
 
 3) compile the Dropbear as static 
 
