@@ -1,27 +1,27 @@
-Beagle bone related flash scripts availble in this link
+# Beagle bone related flash scripts availble in this link
 https://github.com/rcn-ee/repos
 https://github.com/rcn-ee/repos/blob/master/bb-beagle-flasher/suite/bullseye/debian/beagle-flasher
 
 
-sync command usage with clear explaination
+# sync command usage with clear explaination
 https://phoenixnap.com/kb/linux-sync
 
 
-Beaglebone software images -> you can download the image based on the board ie. beaglebone black or beaglebone ai
+# Beaglebone software images -> you can download the image based on the board ie. beaglebone black or beaglebone ai
 https://www.beagleboard.org/distros
 
-Course Repository 
+# Course Repository 
 https://github.com/niekiran/EmbeddedLinuxBBB
 
 
-Angstrom Demo images for BBB
+# Angstrom Demo images for BBB
 http://downloads.angstrom-distribution.org/demo/beaglebone/
 
-Uboot Source code 
+# Uboot Source code 
 https://ftp.denx.de/pub/u-boot/
 
 
-TI AM335x Driver guide
+# TI AM335x Driver guide
 ALL the kernel driver related info is available in the following link
 https://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_Kernel_Drivers.html
 
