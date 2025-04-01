@@ -1,5 +1,7 @@
 
 
+# Initially windows 11 as host machine, ubuntu 24.06 installed in vmware workstation, laptop is old configuration(Intel® Core™ i7-4700MQ CPU @ 2.40GHz × 8,  8Gb ram). While working with debian arm linux system get slow didn't impact work but yocto bitbake command execution time Laptop hanged. So i've decided to install ubutu as host machine in external usb hard drive.  
+
 1. installed ubuntu 24.06 latest one, followed instruction as per the link "https://github.com/Munawar-git/YoctoTutorials/blob/master/00_Yocto_Intro/00-Yocto-Intro.md" following 
 original command "sudo apt install  ..." not worked,tested indiduallay, found the not working command   
     sudo apt install gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping python3-git python3-jinja2     libegl1-mesa libsdl1.2-dev pylint3 xterm python3-subunit mesa-common-dev zstd liblz4-tool
