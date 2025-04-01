@@ -1,4 +1,7 @@
 
+# usb and eth not working to working solution
+https://forum.beagleboard.org/t/usb-and-ethernet-interfaces-are-not-visible-to-me/36157/6
+
 https://www.youtube.com/watch?v=5fj05BWryhM&list=PLwqS94HTEwpQmgL1UsSwNk_2tQdzq3eVJ
 
 https://vadl.github.io/images/bbb/bbb_headers.png
